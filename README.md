@@ -39,7 +39,7 @@ Key | Value | Description
 ------------- | ------------- | -------------
 name | *str* | Device name. Choose any.
 pin | *int* | Pin to which the device is connected to.
-controller | "on" \| "off" \| "day" \| door | Controller name. Depending on the selected controller, the device will be controlled in one of the following ways: <ul><li>**on** - always on</li><li>**off** - always off</li><li>**day** - on during the day, off during the night</li><li>**door** - on when the door is open</li></ul>
+controller | "on" \| "off" \| "day" \| "door" | Controller name. Depending on the selected controller, the device will be controlled in one of the following ways: <ul><li>**on** - always on</li><li>**off** - always off</li><li>**day** - on during the day, off during the night</li><li>**door** - on when the door is open</li></ul>
 
 ### Sample configuration
 ```
@@ -97,8 +97,8 @@ Yes it does! I use it to control grow box with my hydroponic herbs garden. With 
 
 ## TO DO
 * HTTP server daemon with:
- * current sensor data 
- * configuration customization
+   * current sensor data 
+   * configuration customization
 * water level sensor support & water pump controller
 * aeroponics fogger controller
 * timezone support

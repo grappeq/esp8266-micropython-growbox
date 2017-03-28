@@ -1,0 +1,26 @@
+{
+  "daytimeStart": [9,0,0,0],
+  "daytimeEnd": [22,0,0,0],
+  "devices":[
+    {
+      "name": "air pump",
+      "pin": 12,
+      "controller": "on"
+    },
+    {
+      "name": "grow light",
+      "pin": 14,
+      "controller": "day"
+    },
+    {
+      "name": "human light",
+      "pin": 16,
+      "controller": "door"
+    }
+  ],
+  "sensors": {
+    "door": 13,
+    "dht22": 2,
+    "ds18x20": 4
+  }
+}

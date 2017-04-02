@@ -9,6 +9,8 @@ import config
 __dht22_last_measurement_time__ = 0
 __dht22__ = None
 __ds18x20__ = None
+__ds18x20_last_measurement_time__ = 0
+__ds18x20_last_temperature__ = None
 __measurement_interval__ = 5000 #in ms
 
 def is_door_open():
@@ -35,12 +37,19 @@ def dht22_temperature():
     dht22_measure_if_needed()
     return __dht22__.temperature()
 
+def ds18x20_measure_if_needed():
+    global __ds18x20_last_measurement_time__, __measurement_interval__, __ds18x20__, __ds18x20_last_temperature__
+    if time.ticks_ms() > __ds18x20_last_measurement_time__+__measurement_interval__:
+        roms = __ds18x20__.scan()
+        __ds18x20__.convert_temp()
+        time.sleep_ms(750)
+        __ds18x20_last_temperature__ = __ds18x20__.read_temp(roms[0])
+        __ds18x20_last_measurement_time__ = time.ticks_ms()
+
 def ds18x20_temperature():
-    global __ds18x20__
-    roms = __ds18x20__.scan()
-    __ds18x20__.convert_temp()
-    time.sleep_ms(750)
-    return __ds18x20__.read_temp(roms[0])
+    global __ds18x20_last_temperature__
+    ds18x20_measure_if_needed()
+    return __ds18x20_last_temperature__
 
 def ds18x20_present():
     return (__ds18x20__ is not None)

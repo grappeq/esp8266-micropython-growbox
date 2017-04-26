@@ -31,6 +31,7 @@ daytimeStart | [*hours*, *minutes*, *seconds*, *miliseconds*] | Time at which th
 daytimeEnd | [*hours*, *minutes*, *seconds*, *miliseconds*] | Time at which the day ends (and the grow lights are being turned off).
 devices | *array* | Array of dictionaries with device configuration. Check out **devices** subsection below.
 sensors | *dict*: <br> { *sensor1*: *pin1*, *sensor2*: *pin2*, ... } | Dictionary containing list of all sensors - with sensor name as key and pin as value. Valid sensor names are: <ul><li>**door** - door sensor</li><li>**dht22** - DHT22 sensor</li><li>**ds18x20** - DS18S20 and DS18B20 sensors</li></ul>
+mqtt | *dict* | If defined, sensor data reporting via MQTT is enabled. Has 3 required keys: *brokerIP* - IP address of MQTT server, *clientID* and *topic*. MQTT data is send to the broker in form of JSON object with keys: *temperature*, *humidity*, *door* etc. (depending on connected sensors).
 
 ### devices
 Array of devices. Each record contains 3 keys:
@@ -67,6 +68,11 @@ controller | "on" \| "off" \| "day" \| "door" | Controller name. Depending on th
     "door": 13,
     "dht22": 2,
     "ds18x20": 4
+  },
+  "mqtt": {
+    "brokerIP": "192.168.1.100",
+    "clientID": "growbox",
+    "topic": "home/growbox"
   }
 }
 ```

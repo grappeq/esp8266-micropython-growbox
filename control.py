@@ -83,10 +83,12 @@ def get_device_controller(name):
     else:
         return off_controller
 
+
+
 def start(timer):
     global __timer__, __wdt__
+    __timer__ = timer
     init_devices()
     __wdt__ = WDT()
-    __timer__ = timer
     __timer__.init(period=300, mode=Timer.PERIODIC, callback=run)
 

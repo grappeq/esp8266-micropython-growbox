@@ -22,5 +22,10 @@
     "door": 13,
     "dht22": 2,
     "ds18x20": 4
+  },
+  "mqtt": {
+    "brokerIP": "192.168.1.100",
+    "clientID": "growbox",
+    "topic": "home/growbox"
   }
 }

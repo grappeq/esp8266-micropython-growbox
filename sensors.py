@@ -56,10 +56,10 @@ def ds18x20_present():
 
 def temperature():
     global __dht22__
-    if dht22_present():
-        return dht22_temperature()
-    elif ds18x20_present():
+    if ds18x20_present():
         return ds18x20_temperature()
+    elif dht22_present():
+        return dht22_temperature()
     else:
         return None
 

@@ -27,7 +27,6 @@ def report_sensor_data():
     try:
         __mqtt__.connect()
         __mqtt__.publish(config.get("mqtt.topic"), bytes(ujson.dumps(data), 'utf-8'))
-        __mqtt__.disconnect()
     except OSError:
         print("Couldn't connect to MQTT broker")
 
